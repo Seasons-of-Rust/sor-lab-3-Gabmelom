@@ -4,7 +4,7 @@ use std::thread;
 fn main() {
     // Once you've set up the Shop and Card structs, you should be able to
     // uncomment this code
-    
+
     let comic_book_shoppe = Shop {
         cards: [
             Card {
@@ -68,25 +68,32 @@ fn main() {
 
 /// A Shop is a collection of 3 cards.
 struct Shop {
-    cards: [Card; 3]
+    cards: [Card; 3],
 }
 
 impl Shop {
     /// Get the price of the most expensive card in the shop
     fn most_expensive(&self) -> u32 {
-        self.cards.iter().fold(0, |acc, item| {
-            if acc >= item.price { acc } else { item.price }
-        })
+        self.cards.iter().fold(
+            0,
+            |acc, item| {
+                if acc >= item.price {
+                    acc
+                } else {
+                    item.price
+                }
+            },
+        )
     }
 
     /// Get the total damage of all cards in the shop
     fn total_damage(&self) -> u32 {
-        self.cards.iter().fold(0, |total, card| total + card.damage )
+        self.cards.iter().fold(0, |total, card| total + card.damage)
     }
 
     /// Get the total health of all cards in the shop
     fn total_health(&self) -> u32 {
-        self.cards.iter().fold(0, |total, card| total + card.health )
+        self.cards.iter().fold(0, |total, card| total + card.health)
     }
 }
 
@@ -94,7 +101,7 @@ impl Shop {
 struct Card {
     price: u32,
     health: u32,
-    damage: u32
+    damage: u32,
 }
 
 #[cfg(test)]
